@@ -1,0 +1,31 @@
+const sample = require('../samples/sample-list-teams');
+const zapier = require('zapier-platform-core');
+
+const triggerListTeams = (z, bundle) => {
+    
+    // Load the .env variables
+    zapier.tools.env.inject();
+    
+    const responsePromise = z.request({
+        method: 'GET',
+        url: `${process.env.HOLLY_ENDPOINT}/brands`,
+    });
+    return responsePromise
+        .then(response => JSON.parse(response.content));
+};
+
+module.exports = {
+    key: 'list_teams',
+    noun: 'Team',
+
+    display: {
+        label: 'List Teams',
+        hidden: true,
+        description: 'List all the teams of a user'
+    },
+
+    operation: {
+        perform: triggerListTeams,
+        sample: sample
+    }
+};

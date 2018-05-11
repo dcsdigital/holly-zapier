@@ -1,0 +1,26 @@
+{
+  "name": "holly-zapier-example-app",
+  "version": "1.0.0",
+  "description": "An example app for the Zapier platform, integrated with the Holly API endpoint",
+  "repository": "scottybo/holly-zapier",
+  "homepage": "https://zapier.com/developer",
+  "author": "Scott Bowler <scott.bowler@chooseholly.com>",
+  "license": "BSD-3-Clause",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --recursive"
+  },
+  "engines": {
+    "node": "6.10.3",
+    "npm": ">=3.10.10"
+  },
+  "dependencies": {
+    "form-data": "2.1.4",
+    "request": "2.81.0",
+    "zapier-platform-core": "6.0.0"
+  },
+  "devDependencies": {
+    "mocha": "3.2.0",
+    "should": "11.2.1"
+  }
+}
