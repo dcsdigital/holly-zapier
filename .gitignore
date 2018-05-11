@@ -4,4 +4,4 @@
 /nbproject/
 .env
 .zapierapprc
-.package.lock
+.package-lock.json
