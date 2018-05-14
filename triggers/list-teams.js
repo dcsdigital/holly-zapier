@@ -1,10 +1,6 @@
 const sample = require('../samples/sample-list-teams');
-const zapier = require('zapier-platform-core');
 
 const triggerListTeams = (z, bundle) => {
-    
-    // Load the .env variables
-    zapier.tools.env.inject();
     
     const responsePromise = z.request({
         method: 'GET',

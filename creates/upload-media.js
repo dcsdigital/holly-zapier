@@ -1,13 +1,9 @@
 const sample = require('../samples/sample-upload-media');
-const zapier = require('zapier-platform-core');
 const request = require('request');
 const FormData = require('form-data');
 const hydrators = require('../hydrators');
 
 const uploadMedia = (z, bundle) => {
-
-    // Load the .env variables
-    zapier.tools.env.inject();
     
     const formData = new FormData();
     

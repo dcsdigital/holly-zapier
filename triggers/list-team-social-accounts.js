@@ -1,10 +1,6 @@
 const sample = require('../samples/sample-list-social-accounts');
-const zapier = require('zapier-platform-core');
 
 const triggerListSocialAccounts = (z, bundle) => {
-    
-    // Load the .env variables
-    zapier.tools.env.inject();
     
     const responsePromise = z.request({
         method: 'GET',

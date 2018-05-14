@@ -1,12 +1,7 @@
 const sample = require('../samples/sample-add-to-post-planner');
-const zapier = require('zapier-platform-core');
-const FormData = require('form-data');
 const request = require('request');
 
 const createEvergreenPost = (z, bundle) => {
-
-    // Load the .env variables
-    zapier.tools.env.inject();
     
     const responsePromise = z.request({
         method: 'POST',
