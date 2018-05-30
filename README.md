@@ -21,9 +21,9 @@ Step 3.
 
  - Install the Zapier CLI: see https://zapier.com/developer/start/introduction
  - Setup your LOCAL environment by following the instructions below (Setting up your environment)
- - Setup your REMOTE environment by following the instructions below (Setting up your environment on Zapier)
  - Test your app: `zapier test` - learn more [here](https://zapier.com/developer/start/testing-your-app)
  - Deploy your app `zapier push` - learn more [here](https://zapier.com/developer/start/deploying-your-app)
+ - Setup your REMOTE environment by following the instructions below (Setting up your environment on Zapier)
  - Head over to https://zapier.com/developer/ and add your logo, app title etc
  - You can start using the App! Head over to: https://zapier.com/app/editor
 
