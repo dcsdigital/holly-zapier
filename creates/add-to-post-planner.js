@@ -9,7 +9,7 @@ const createEvergreenPost = (z, bundle) => {
         body: {
             categories: bundle.inputData.categories,
             brand_id: bundle.inputData.team_id,
-            status: 'draft',
+            status: bundle.inputData.status,
             text: bundle.inputData.text,
             media_url: bundle.inputData.media_url,
             max_count: 1,
@@ -37,7 +37,7 @@ module.exports = {
         inputFields: [
               {key: 'team_id', label:'Team', required: true, dynamic: 'list_teams.id.name'},
               {key: 'categories', label:'Planner Categories', required: true, dynamic: 'list_post_planner_categories.id.name'},
-              {key: 'status', label:'Status', required: true},
+              {key: 'status', label:'Status', required: true, choices: ["draft", "approved"]},
               {key: 'text', label:'Text', required: true},
               {key: 'media_url', label:'Post Image URL', required: false}
         ],
