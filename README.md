@@ -8,6 +8,7 @@ A base project to create a Zapier app for your [Holly Social](https://www.choose
 Step 1.
 
  - Sign up as a Zapier Developer: https://zapier.com/developer
+ - Create an app
  - Keep the reference nearby if you're going to develop further: https://zapier.github.io/zapier-platform-cli/cli.html#zapier-cli-reference
 
 
@@ -16,10 +17,37 @@ Step 2.
  - Clone this repository `git clone https://github.com/scottybo/holly-zapier`
  - Run `npm install` in the project folder
 
-
 Step 3.
 
  - Install the Zapier CLI: see https://zapier.com/developer/start/introduction
+ - Login to Zapier `zapier login`
+ - Link your cloned Zapier app to your app on their site `zapier link`
+ - Deploy your app `zapier push`
+
+Step 4.
+
+Go to your app in Zapier and head over to "Actions". Add the following actions:
+
+** Upload media **
+
+ - `key`: `media_upload`
+ - `name`: `Upload Media`
+ - `noun`: `Media`
+ - `description`: `Uploads a media file to your library.`
+
+In the Input Designer tab add a new field, with values as follows:
+
+ - `Label`: `Media File`
+ - `Key`: `media`
+ - `Type`: `file`
+ - `Default Text`: leave blank
+ - `Options`: `required`
+
+In the API Configuration tab add a new `POST` request to the following URL
+
+`https://{whitelabel_url}/api/media/upload/public`
+
+Step 4. (Optional)
  - Setup your LOCAL environment by following the instructions below (Setting up your environment)
  - Test your app: `zapier test` - learn more [here](https://zapier.com/developer/start/testing-your-app)
  - Deploy your app `zapier push` - learn more [here](https://zapier.com/developer/start/deploying-your-app)
