@@ -11,7 +11,7 @@ const testAuth = (z /*, bundle*/) => {
         url: `${process.env.HOLLY_ENDPOINT}/zapier/verify`,
     }).then((response) => {
         if (response.status === 401) {
-            throw new Error('The API Key you supplied is invalid');
+            throw new Error('The API Token you supplied is invalid');
         }
         return response.json;
     });
@@ -22,7 +22,7 @@ module.exports = {
     fields: [
         {
             key: 'api_token',
-            label: 'API Key',
+            label: 'API Token',
             required: true,
             type: 'string',
             helpText: 'Found on your user settings page.'
@@ -32,7 +32,5 @@ module.exports = {
     // method whenver a user connects their account for the first time.
     test: testAuth,
     // name is the key in the json returned from testAuth
-    connectionLabel: (z, bundle) => {
-        return bundle.inputData.name;
-    }
+    connectionLabel: '{{name}}'
 };
