@@ -1,53 +1,46 @@
 
 # Holly Social - Zapier App Template
+
 A base project to create a Zapier app for your [Holly Social](https://www.chooseholly.com) Whitelabel System. Need help? Email us: support@chooseholly.com
 
 
-## Getting started
+# Getting started
 
-Step 1.
+## Step 1.
 
  - Sign up as a Zapier Developer: https://zapier.com/developer
- - Create an app
- - Keep the reference nearby if you're going to develop further: https://zapier.github.io/zapier-platform-cli/cli.html#zapier-cli-reference
 
 
-Step 2. 
+## Step 2. 
 
  - Clone this repository `git clone https://github.com/scottybo/holly-zapier`
  - Run `npm install` in the project folder
 
-Step 3.
+## Step 3.
 
- - Install the Zapier CLI: see https://zapier.com/developer/start/introduction
+ - Install the Zapier CLI: see https://zapier.com/developer/start/introduction or make sure you have the latest version if you already have it installed `zapier --version`
  - Login to Zapier `zapier login`
- - Link your cloned Zapier app to your app on their site `zapier link`
- - Deploy your app `zapier push`
+ - Deploy your app `zapier push` and follow the prompts for giving the app a name
 
-Step 4.
+## Step 4.
 
-Go to your app in Zapier and head over to "Actions". Add the following actions:
+Now we need to define the environment variables on Zapier for this app. 
 
-** Upload media **
+Run `zapier env 1.0.0 HOLLY_ENDPOINT "https://app.chooseholly.com/api"`
 
- - `key`: `media_upload`
- - `name`: `Upload Media`
- - `noun`: `Media`
- - `description`: `Uploads a media file to your library.`
+**Note:** Replace the URL below with the URL to your api endpoint, e.g. `https://my.whitelabel.com/api`
 
-In the Input Designer tab add a new field, with values as follows:
+## Step 5.
 
- - `Label`: `Media File`
- - `Key`: `media`
- - `Type`: `file`
- - `Default Text`: leave blank
- - `Options`: `required`
+Update your app's branding: https://platform.zapier.com/cli_tutorials/cli-branding
 
-In the API Configuration tab add a new `POST` request to the following URL
 
-`https://{whitelabel_url}/api/media/upload/public`
 
-Step 4. (Optional)
+
+# Developing this base app
+
+Keep the reference nearby if you're going to develop further: https://zapier.github.io/zapier-platform-cli/cli.html#zapier-cli-reference
+
  - Setup your LOCAL environment by following the instructions below (Setting up your environment)
  - Test your app: `zapier test` - learn more [here](https://zapier.com/developer/start/testing-your-app)
  - Deploy your app `zapier push` - learn more [here](https://zapier.com/developer/start/deploying-your-app)
@@ -55,7 +48,7 @@ Step 4. (Optional)
  - Head over to https://zapier.com/developer/ and add your logo, app title etc
  - You can start using the App! Head over to: https://zapier.com/app/editor
 
-## Setting up your environment
+# Setting up your environment
 
 We have included a file name `.env.example.` - copy the contents of this file and place it in a new file called `.env` (alternatively, you can simply rename the example file).
 
@@ -75,13 +68,3 @@ HOLLY_TEST_TEAM_ID=15
 HOLLY_TEST_CATEGORY_ID=6087e999-3d6d-46d3-b4fb-ab1c0e12b924
 HOLLY_TEST_MEDIA_URL=https://holly.nyc3.digitaloceanspaces.com/_test-files/logo-square-1024.png
 ```
-
-## Setting up your environment on Zapier
-
-The .env file is for running the app locally - you must also define the ENV variables on the Zapier servers.
-
-Simply run (replacing the URL with your endpoint)
-
-`zapier env 1.0.0 HOLLY_ENDPOINT "https://app.chooseholly.com/api"`
-
-Stuck? Run `zapier help env`
