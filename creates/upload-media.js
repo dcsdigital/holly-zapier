@@ -7,17 +7,22 @@ const uploadMedia = (z, bundle) => {
     
     const formData = new FormData();
     
-    formData.append('brand_id', request(bundle.inputData.team_id));
+    formData.append('team_id', bundle.inputData.team_id);
     
-    // file will in fact be a url where the file data can be downloaded from
+    // media will in fact be an url where the file data can be downloaded from
     // which we do via a stream created by NPM's request package
     // (form-data doesn't play nicely with z.request)
-    formData.append('media', request(bundle.inputData.media));
+    //formData.append('media_url', request(bundle.inputData.media_url));
+    //formData.append('folder_id', request(bundle.inputData.folder_id));
 
-    const responsePromise = z.request({
+    return z.request({
         method: 'POST',
-        url: `${process.env.HOLLY_ENDPOINT}/media/upload/public`,
-        body: formData
+        url: `${process.env.HOLLY_ENDPOINT}/media/upload/remote`,
+        body: {
+            media_url: bundle.inputData.media_url,
+            folder_id: bundle.inputData.folder_id,
+            team_id: bundle.inputData.team_id,
+        }
     })
     .then((response) => {
         const media = response.json;
@@ -25,7 +30,7 @@ const uploadMedia = (z, bundle) => {
         // Make it possible to use the actual uploaded (or online converted)
         // file in a subsequent action. No need to download it now, so again
         // dehydrating like in ../triggers/newFile.js
-        media.file = z.dehydrate(hydrators.downloadFile, {
+        media.file = z.dehydrateFile(hydrators.downloadFile, {
             media_url: media.url,
         });
 
@@ -39,13 +44,14 @@ module.exports = {
 
     display: {
         label: 'Upload Media',
-        description: 'Uploads media file to the root folder of your Media Library'
+        description: 'Uploads media file to a folder in your Media Library'
     },
 
     operation: {
         inputFields: [
             {key: 'team_id', label:'Team', required: true, dynamic: 'list_teams.id.name'},
-            {key: 'media', label:'Media File', required: true, type: 'file'},
+            {key: 'folder_id', label:'Folder', required: true, dynamic: 'list_media_folders.id.name'},
+            {key: 'media_url', required: true, type: 'file', label: 'File'},
         ],
         perform: uploadMedia,
         sample: sample,

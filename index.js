@@ -9,6 +9,7 @@ const uploadMedia = require('./creates/upload-media');
 const listPostPlannerCategories = require('./triggers/list-post-planner-categories');
 const listTeamSocialAccounts = require('./triggers/list-team-social-accounts');
 const listTeams = require('./triggers/list-teams');
+const listMediaFolders = require('./triggers/list-media-folders');
 
 // Load Authentication
 const authentication = require('./authentication');
@@ -56,6 +57,7 @@ const App = {
    [listPostPlannerCategories.key]: listPostPlannerCategories,
    [listTeamSocialAccounts.key]: listTeamSocialAccounts,
    [listTeams.key]: listTeams,
+   [listMediaFolders.key]: listMediaFolders,
   },
 
   // If you want your searches to show up, you better include it here!
@@ -65,7 +67,7 @@ const App = {
   // If you want your creates to show up, you better include it here!
   creates: {
     [createEvergreenPost.key]: createEvergreenPost,
-    //[uploadMedia.key]: uploadMedia,
+    [uploadMedia.key]: uploadMedia,
   }
 };
 
